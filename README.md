@@ -6,17 +6,41 @@ This project contains TypeScript code examples demonstrating fundamental concept
 ## Project Structure
 ```
 .
-├── tsconfig.json          # TypeScript configuration
+├── tsconfig.json          # TypeScript configuration (rootDir: ./src, outDir: ./dist)
 ├── src/
-│   └── index.ts          # Main TypeScript file with examples
+│   ├── index.ts          # Main TypeScript file with examples
+│   └── type_annotations.ts # Demonstrates type annotations and type-evolving `any` usage
 └── README.md             # This file
 ```
+
+## Files / page summaries
+
+This project will grow into a set of small "pages" or example files where each file focuses on a single concept. Below are short, slightly expanded summaries for the files currently in `src/`.
+
+- `src/index.ts` — Core examples and small utilities
+  - Purpose: A compact set of examples demonstrating type inference, basic primitives, boolean logic, and simple numeric functions.
+  - Key examples:
+    - Type inference via a ternary operator (song selection)
+    - String property access (`.length`)
+    - Boolean expressions and a helper function `determineIfLong` that checks string length
+    - Numeric examples: `age`, `calculateSimpleInterest`, and `compoundInterest`
+  - Why keep it: This file is a handy place for quick end-to-end examples you can run and tinker with.
+
+- `src/type_annotations.ts` — Focused on static typing and the dangers of `any`
+  - Purpose: Demonstrates how an untyped variable can "evolve" at runtime and why explicit annotations (`let name: string`) are important.
+  - Key examples:
+    - `rocket` starts untyped, is first used as a string, then reassigned as a number to show how runtime values differ
+    - Shows compilation errors that arise when you try to call string methods on a number (commented example)
+    - Shows how declaring `let name: string` prevents accidental assignment of a number
+  - Why keep it: A short practical lesson on type safety and how TypeScript's annotations help prevent mistakes.
+
+Design note: As you add more pages, consider grouping related examples into subfolders (for example `src/strings/*`, `src/numbers/*`, `src/functions/*`) and keeping each file focused on one concept with a short header comment.
 
 ## Code Examples
 
 ### 1. Type Inference with Ternary Operator
 ```typescript
-let bestSong = Math.random() > 5 ? "Chain of fools" : "Magic happened."
+let bestSong = Math.random() > 0.5 ? "Chain of fools" : "Magic happened."
 ```
 - **Concept**: TypeScript automatically infers the type as `string`
 - **Note**: The condition `Math.random() > 5` is always false since `Math.random()` returns values between 0 and 1
@@ -120,20 +144,35 @@ function compoundInterest(principal : number, rate : number, years :number) : nu
 - Node.js installed
 - TypeScript installed (`npm install -g typescript`)
 
-### Compile TypeScript
+If you don't want to install TypeScript globally you can use the local tooling via npm scripts or npx (examples shown below).
+
+### Compile TypeScript (uses your project's `tsconfig.json`)
+The project `tsconfig.json` is configured with `rootDir: ./src` and `outDir: ./dist`. Compile using:
+
 ```bash
-tsc
+tsc --project tsconfig.json
 ```
 
-### Run the JavaScript Output
+Then run the emitted JavaScript from the `dist` folder:
+
 ```bash
 node dist/index.js
 ```
-*Note: Check your `tsconfig.json` for the output directory configuration*
 
-### Or use ts-node for direct execution
+If you prefer not to compile first, run directly using `ts-node` (no global TypeScript required):
+
 ```bash
 npx ts-node src/index.ts
+```
+
+Or add an npm script in `package.json` (recommended for convenience):
+
+```json
+"scripts": {
+  "build": "tsc --project tsconfig.json",
+  "start": "node dist/index.js",
+  "dev": "npx ts-node src/index.ts"
+}
 ```
 
 ## Learning Exercises
@@ -153,6 +192,8 @@ npx ts-node src/index.ts
 
 5. **Explore Union Types**: Create a function that accepts either a string or number parameter
 
+6. **Inspect `src/type_annotations.ts`**: Read and run the file to see how a variable with no annotation can "evolve" its type at runtime. Try adding explicit type annotations to prevent accidental misuse of properties (for example, calling string methods on a number).
+
 ## Additional Resources
 
 - [TypeScript Official Documentation](https://www.typescriptlang.org/docs/)
@@ -167,4 +208,4 @@ npx ts-node src/index.ts
 
 ---
 
-**Last Updated**: October 19, 2025
+**Last Updated**: October 20, 2025
