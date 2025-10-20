@@ -36,85 +36,19 @@ This project will grow into a set of small "pages" or example files where each f
 
 Design note: As you add more pages, consider grouping related examples into subfolders (for example `src/strings/*`, `src/numbers/*`, `src/functions/*`) and keeping each file focused on one concept with a short header comment.
 
-## Code Examples
+## Examples (short)
 
-### 1. Type Inference with Ternary Operator
-```typescript
-let bestSong = Math.random() > 0.5 ? "Chain of fools" : "Magic happened."
+Rather than embedding full example code in this README, each example file contains concise, runnable code and inline comments. Open the file links below to view and run the examples.
+
+- [src/index.ts](src/index.ts) — Collection of beginner-friendly examples: type inference, primitives, a small `determineIfLong` helper, and simple/compound interest functions.
+- [src/type_annotations.ts](src/type_annotations.ts) — Demonstrates the difference between untyped variables (type `any`) and explicit annotations like `let name: string`.
+- [src/literal_types.ts](src/literal_types.ts) — (If present) Examples showing literal and narrow types — open the file to explore.
+
+Quick tip: run any single file directly with `ts-node` to experiment quickly. For example:
+
+```bash
+npx ts-node src/index.ts
 ```
-- **Concept**: TypeScript automatically infers the type as `string`
-- **Note**: The condition `Math.random() > 5` is always false since `Math.random()` returns values between 0 and 1
-- **Inferred Type**: `string`
-
-### 2. String Type and Properties
-```typescript
-let firstName = "Marianna"
-console.log(firstName.length)
-```
-- **Concept**: String variables have built-in properties like `.length`
-- **Type**: Explicitly inferred as `string`
-- **Output**: `8` (length of "Marianna")
-
-### 3. Boolean Type with Conditional Logic
-```typescript
-let long = firstName.length > 8? true : false
-```
-- **Concept**: Boolean type inference from conditional expression
-- **Type**: `boolean`
-- **Simplification Note**: This can be simplified to just `firstName.length > 8` since it already returns a boolean
-
-### 4. Function with Type Annotations
-```typescript
-function determineIfLong(name : string) : boolean {
-    return name.length > 8
-}
-```
-- **Concept**: Function parameter and return type annotations
-- **Parameter**: `name` is typed as `string`
-- **Return Type**: Explicitly declared as `boolean`
-- **Logic**: Returns `true` if the name has more than 8 characters
-
-**Example Outputs**:
-- `determineIfLong("Marianna")` → `false` (8 characters, not > 8)
-- `determineIfLong("James Mwai")` → `true` (10 characters including space)
-- `determineIfLong("Anthony")` → `false` (7 characters)
-
-### 5. Number Type
-```typescript
-let age = 30
-```
-- **Concept**: TypeScript infers `number` type from numeric literal
-- **Type**: `number`
-
-### 6. Simple Interest Calculator
-```typescript
-function calculateSimpleInterest(principal : number, rate : number, years : number) : number {
-    return principal * rate * years
-}
-```
-- **Concept**: Multiple parameters with type annotations
-- **Formula**: `Simple Interest = Principal × Rate × Time`
-- **Parameters**:
-  - `principal`: Initial amount (number)
-  - `rate`: Interest rate (number)
-  - `years`: Time period (number)
-- **Return Type**: `number`
-- **Example**: `calculateSimpleInterest(1000, 0.1, 1)` → `100`
-
-### 7. Compound Interest Calculator
-```typescript
-function compoundInterest(principal : number, rate : number, years :number) : number {
-    rate = rate < 1 ? rate : rate / 100
-    return principal * (1 + rate) ** years
-}
-```
-- **Concept**: More complex function with conditional logic
-- **Formula**: `A = P(1 + r)^t` where A is the final amount
-- **Smart Rate Handling**: 
-  - If `rate < 1`, treats it as a decimal (e.g., 0.1 = 10%)
-  - If `rate >= 1`, treats it as a percentage and converts (e.g., 10 → 0.1)
-- **Exponentiation**: Uses the `**` operator for power calculation
-- **Example**: `compoundInterest(1000, 0.1, 1)` → `1100`
 
 ## Key TypeScript Concepts Covered
 
