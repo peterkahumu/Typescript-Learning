@@ -3,42 +3,36 @@
 ## Overview
 This project contains TypeScript code examples demonstrating fundamental concepts including type annotations, type inference, and basic function definitions. It's designed for learning TypeScript basics.
 
-## Project Structure
-```
-.
-├── tsconfig.json          # TypeScript configuration (rootDir: ./src, outDir: ./dist)
-├── src/
-│   ├── index.ts          # Main TypeScript file with examples
-    ├──objects.ts         # works with typescripts objects and types
-│   └── type_annotations.ts # Demonstrates type annotations and type-evolving `any` usage
-└── README.md             # This file
-```
 
 ## Files / page summaries
 
-This project is organized as small example "pages" under `src/`. Each file focuses on a single concept. Below are concise summaries for every current file in `src/`.
+This project is organized as small example "pages" under `src/`. Each file focuses on a single concept so you can open, run, and learn from one focused example at a time. Below are concise summaries for every current file in `src/`.
 
 - `src/index.ts` — Core examples and small utilities
-  - Focus: quick, runnable examples that demonstrate type inference, string/boolean/number primitives, and small helper functions.
-  - Notable items: `determineIfLong`, `calculateSimpleInterest`, `compoundInterest`, and the `bestSong` ternary example.
+  - Focus: quick, runnable examples demonstrating type inference, primitives (string/number/boolean), and small helper functions.
+  - Notable items: `bestSong` (ternary inference), `determineIfLong`, `calculateSimpleInterest`, `compoundInterest`.
 
 - `src/type_annotations.ts` — Explicit typing vs `any`
-  - Focus: how untyped variables can change shape at runtime and how explicit annotations prevent errors.
-  - Notable items: `rocket` (type-evolving), `let name: string` example and comments showing common compiler errors.
+  - Focus: shows how an untyped variable can "evolve" at runtime and how explicit annotations prevent misuse.
+  - Notable items: `rocket` (type-evolving example), `let name: string` example, and commented compiler-error examples.
 
-- `src/literal_types.ts` — Literal and narrow types
-  - Focus: literal types and allowed-value narrowing (e.g., `let yourName: "Ada"` and unions like `number | "Long" | "Short"`).
-  - Notable items: examples that show which assignments are allowed and which will cause compile-time errors.
+- `src/literal_types.ts` — Literal and narrowed types
+  - Focus: literal types and narrowing (e.g., `let yourName: "Ada"` or unions like `number | "Long" | "Short"`).
+  - Notable items: examples that show which assignments are allowed and which cause compile-time errors.
 
-- `src/objects.ts` — Object types, aliases and composition
-  - Focus: declaring object types, type aliases (`type Human`), optional properties, enums, nested objects, and functions that operate on typed objects.
-  - Notable items: `displayPoemInfo`, `Poem`/`Human`/`Book` types, and examples of narrowing with `in` checks.
+- `src/objects.ts` — Object types, aliases, composition
+  - Focus: declaring object types inline and with `type` aliases, optional properties, enums, nested objects, and functions that accept typed objects.
+  - Notable items: `Human`, `Poem`, `Book` types, `displayPoemInfo`, optional properties (`chapters?`), and object unions.
 
-  -  Unions and narrowing techniques
-  - Focus: union types (e.g., `string | number | undefined`), runtime narrowing patterns (assignment, `typeof`, `in`), and safe access to members.
-  - Notable items: examples showing common pitfalls (e.g., calling `.length` on `string | number`) and recommended checks.
+- `src/unions.ts` — Unions and narrowing techniques
+  - Focus: union types (e.g., `string | number | undefined`) and runtime narrowing patterns (assignment narrowing, `typeof`, `in`).
+  - Notable items: examples showing common pitfalls (e.g., calling `.length` on a `string | number`), and recommended checks.
 
-Design note: Keep each file small and focused. When you add more pages, group related topics into folders such as `src/strings/`, `src/objects/`, `src/types/` to make navigation easier.
+- `src/functions.ts` — Functions, rest params, recursion and small helpers
+  - Focus: function signatures, optional parameters, rest parameters, recursion, and small type-based helpers.
+  - Notable items: `singSong`, `announceSong` (with a `Song` type), `singAllSongs` (rest parameters), `getSongAt` (safe indexing), `singSongsRecursive`, and `countSongs` (tail-recursive style).
+
+Design note: Keep each file small and focused. As you add more pages, consider grouping related topics into subfolders (for example `src/strings/`, `src/objects/`, `src/functions/`) and give each file a one-line header comment describing the intent.
 
 ## Examples (short)
 
@@ -146,4 +140,4 @@ Or add an npm script in `package.json` (recommended for convenience):
 
 ---
 
-**Last Updated**: October 22, 2025
+**Last Updated**: October 24, 2025
